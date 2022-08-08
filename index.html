@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <div class="all">
+      <div class="fixed">
+        <header class="header">
+          <div class="header__container container">
+            <object
+              class="header__change-background"
+              data="img/changeBackgr.svg"
+              type=""
+            ></object>
+            <div class="header__user">
+              <div class="header__user__img__wrap">
+                <img class="header__user__img" src="img/userIcon.svg" alt="" />
+              </div>
+              <p class="header__user__name">Lizaveta Lazarchuk</p>
+            </div>
+          </div>
+        </header>
+
+        <section class="info">
+          <div class="info__container container">
+            <div class="info__date">
+              <div class="info__date__day">
+                <span class="info__date__week-day">Monday</span>
+                <span class="info__date__month">August</span>
+                <span class="info__date__num">16</span>
+              </div>
+              <div class="info__date__time">
+                <p>12 : 30 : 15</p>
+              </div>
+            </div>
+            <div class="info__weather">
+              <div class="info__weather__mane">
+                <span class="info__weather__degree">25</span>
+                <object
+                  class="info__weather__cels"
+                  data="img/cels.svg"
+                  type=""
+                ></object>
+                <span class="info__weather__city">(Minsk)</span>
+              </div>
+              <div class="info__weather__sun">Cloudy</div>
+              <div class="info__weather__wind">
+                <span class="info__weather__wind__title">Wind speed:</span>
+                <span class="info__weather__wind__value">4 m/h</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="add-task">
+          <div class="add-task__container container">
+            <div class="add-task__form">
+              <input
+                class="add-task__input"
+                type="text"
+                placeholder="Add new tast"
+              />
+              <button class="add-task__btn">
+                <object
+                  class="add-task__svg"
+                  data="img/plus.svg"
+                  type=""
+                ></object>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+      <section class="tasks">
+        <div class="tasks__container container">
+          <div class="tasks__filter">
+            <span class="tasks__filter__title">Filter:</span>
+            <div class="tasks__filter__list">
+              <input class="tasks__filter__item" type="radio" />New
+              <input class="tasks__filter__item" type="radio" />Old
+              <input class="tasks__filter__item" type="radio" />Done
+              <input class="tasks__filter__item" type="radio" />Not done
+            </div>
+            <object
+              class="tasks__filter__svg"
+              data="img/arrow.svg"
+              type=""
+            ></object>
+          </div>
+          <div class="tasks__list">
+            <div class="tasks__item">
+              <input class="tasks__item__checkbox" id="1" type="checkbox" />
+              <label class="tasks__item__label" for="1">First task</label>
+              <div class="tasks__item__info">
+                <p class="tasks__item__date">18.08.2022</p>
+                <p class="tasks__item__time">10:30</p>
+              </div>
+              <button class="tasks__item__btn-delete">
+                <object
+                  class="tasks__item__svg-delete"
+                  data="img/trash.svg"
+                  type=""
+                ></object>
+              </button>
+            </div>
+            <div class="tasks__item">
+              <input class="tasks__item__checkbox" id="1" type="checkbox" />
+              <label class="tasks__item__label" for="1">First task</label>
+              <div class="tasks__item__info">
+                <p class="tasks__item__date">18.08.2022</p>
+                <p class="tasks__item__time">10:30</p>
+              </div>
+              <button class="tasks__item__btn-delete">
+                <object
+                  class="tasks__item__svg-delete"
+                  data="img/trash.svg"
+                  type=""
+                ></object>
+              </button>
+            </div>
+            <div class="tasks__item">
+              <input class="tasks__item__checkbox" id="1" type="checkbox" />
+              <label class="tasks__item__label" for="1">First task</label>
+              <div class="tasks__item__info">
+                <p class="tasks__item__date">18.08.2022</p>
+                <p class="tasks__item__time">10:30</p>
+              </div>
+              <button class="tasks__item__btn-delete">
+                <object
+                  class="tasks__item__svg-delete"
+                  data="img/trash.svg"
+                  type=""
+                ></object>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

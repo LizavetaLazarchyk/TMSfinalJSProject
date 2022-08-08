@@ -1,0 +1,209 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+$manefont: roboto;
+$tasksBackgroundColor: #212121;
+
+@mixin titlesFontDesktop {
+    font-family: $manefont;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 49px;
+}
+@mixin maneFontDesktop {
+    font-family: $manefont;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 30px;
+}
+@mixin addictionalFontDesktop {
+    font-family: $manefont;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+}
+.container{
+    padding: 0 20px;
+}
+// body{
+//     background-image: url(img/backround.png);
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     background-size: cover;
+//     // position: relative;
+//     width: 100%;
+//     color: #fff;
+//     z-index: 0;
+//     height: 100vh;
+// }
+    .all {
+    background-image: url(img/backround.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    color: #fff;
+    z-index: 0;
+    height: fit-content;
+}
+.header{
+    margin-bottom: 10px;
+    &__container {
+    padding: 30px 105px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 40px;
+    align-items: center;
+    }
+    &__user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__img{
+        object-fit: cover;
+    }
+    &__img__wrap{
+    width: 50px;
+    height: 50px;
+    border-radius: 100;
+    overflow: hidden;
+    margin-bottom: 10px;
+    }
+    &__name{
+    @include addictionalFontDesktop();
+    font-size: 18px;
+    line-height: 21px;
+    }
+    }
+}
+
+.info{
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    &__day{
+    margin-bottom: 45px;
+    }
+    &__container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    }
+    &__date{
+        margin-right: 165px;
+    &__day{
+        margin-bottom: 45px;
+    }
+    &__week-day{
+        @include titlesFontDesktop();
+        font-size: 64px;
+        line-height: 75px;
+        margin-right: 10px;
+    }
+    &__month{
+        @include addictionalFontDesktop();
+        margin-right: 5px;
+    }
+    &__num{
+        @include addictionalFontDesktop();
+    }
+    &__time{
+        @include titlesFontDesktop();
+    }
+    }
+    &__weather{
+    &__mane{
+        display: flex;
+        column-gap: 5px;
+        align-items: flex-end;
+    }
+    &__degree{
+        @include titlesFontDesktop();
+    }
+    &__city{
+        @include addictionalFontDesktop();
+        font-weight: 500;
+        padding-bottom: 8px;
+    }
+    &__sun{
+        @include addictionalFontDesktop();
+    }
+    &__wind{
+        @include addictionalFontDesktop();
+    }
+    }
+}
+.add-task{
+    &__container{
+        max-width: 800px;
+        width: 100%;
+        padding: 0;
+        margin: 0 auto 35px;
+    }
+    &__form{
+        // max-width: 800px;
+        // width: 100%;
+        // margin: 0 auto 35px;
+        background-color: $tasksBackgroundColor;
+        padding: 15px 35px 15px 20px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__input{
+        @include maneFontDesktop();
+        padding: 15px 20px;
+        border-radius: 8px;
+        max-width: 680px;
+        width: 100% ;
+    }
+
+}
+.tasks__filter{
+    @include addictionalFontDesktop();
+    font-weight: 500;
+    display: flex;
+    column-gap: 5px;
+    align-items: flex-start;
+    // &__list{
+    //     display: flex;
+    //     flex-direction: column;
+    // }
+}
+.tasks__list{
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+.tasks__item{
+    // max-width: 800px;
+    background-color: $tasksBackgroundColor;
+    padding: 20px 35px 20px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    &__checkbox{
+        margin-left: 0;
+    }
+    &__label{
+        @include maneFontDesktop();
+        line-height: 40px;
+        width: 100%;
+        margin-left: 0;
+    }
+    &__info{
+        @include addictionalFontDesktop();
+        font-size: 18px;
+        line-height: 21px;
+        padding-right: 25px;
+        text-align: center;
+    }
+    &__btn-delete{
+        width: 40px;
+        height: 40px;
+    }
+}
