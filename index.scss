@@ -25,18 +25,13 @@ $tasksBackgroundColor: #212121;
 }
 .container{
     padding: 0 20px;
+    @media (max-width: 880px ) {
+        padding: 0 30px;
+    }
+    @media (max-width: 430px ) {
+        padding: 0 15px;
+    }
 }
-// body{
-//     background-image: url(img/backround.png);
-//     background-repeat: no-repeat;
-//     background-position: center;
-//     background-size: cover;
-//     // position: relative;
-//     width: 100%;
-//     color: #fff;
-//     z-index: 0;
-//     height: 100vh;
-// }
     .all {
     background-image: url(img/backround.png);
     background-repeat: no-repeat;
@@ -45,62 +40,151 @@ $tasksBackgroundColor: #212121;
     width: 100%;
     color: #fff;
     z-index: 0;
-    height: fit-content;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #000;
+        opacity: 30%;
+        z-index: 0;
+    }
 }
 .header{
+    position: relative;
+    z-index: 3;
     margin-bottom: 10px;
+    @media (max-width: 880px ) {
+        margin-bottom: 5%;
+    }
+    @media (max-width: 620px ) {
+        margin-bottom: 3%;
+    }
     &__container {
-    padding: 30px 105px;
+    padding: 20px 105px 5px;
     margin-bottom: 10px;
     display: flex;
-    justify-content: flex-end;
-    column-gap: 40px;
+    justify-content: space-between;
     align-items: center;
+    @media (max-width: 1100px ) {
+        padding: 20px 30px 5px;
+    }
+    @media (max-width: 430px ) {
+        padding: 20px 15px 5px;
+    }
+    }
+    &__content{
+        display: flex;
+        column-gap: 40px;
+        align-items: center;
+        @media (max-width: 430px ) {
+            column-gap: 20px;
+        }
+        @media (max-width: 325px ) {
+            column-gap: 10px;
+        }
+    }
+    &__time{
+        @include maneFontDesktop();
+        @media (max-width: 620px ) {
+            font-size: 24px;
+            line-height: 26px;
+        }
+        @media (max-width: 350px ) {
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+    &__change{
+        @media (max-width: 960px ) {
+            width: 30px;
+            height: 30px;
+        }
+        @media (max-width: 430px ) {
+            width: 20px;
+            height: 20px;
+        }
     }
     &__user{
     display: flex;
     flex-direction: column;
     align-items: center;
-    &__img{
-        object-fit: cover;
+    cursor: pointer;
+    &__svg__wrap{
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
     }
-    &__img__wrap{
-    width: 50px;
-    height: 50px;
-    border-radius: 100;
-    overflow: hidden;
-    margin-bottom: 10px;
-    }
+    &__svg{
+        width: 100%;
+        height: 100%;
+        fill: #fff
+        }
     &__name{
     @include addictionalFontDesktop();
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 16px;
+    line-height: 18px;
     }
     }
 }
 
 .info{
+    position: relative;
+    z-index: 3;
     max-width: 800px;
     margin: 0 auto;
-    margin-bottom: 50px;
-    &__day{
-    margin-bottom: 45px;
+    margin-bottom: 4%;
+    @media (max-width: 880px ) {
+        max-width: 100%;
+    }
+    @media (max-width: 620px ) {
+        margin-bottom: 5%;
     }
     &__container{
+    padding: 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
+    @media (max-width: 880px ) {
+        padding: 0 30px;
+    }
+    @media (max-width: 620px ) {
+        max-width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    @media (max-width: 430px ) {
+        padding: 0 15px;
+    }
     }
     &__date{
         margin-right: 165px;
+        @media (max-width: 880px ) {
+            margin-right: 0;
+        }
     &__day{
-        margin-bottom: 45px;
+        margin-bottom: 20px;
     }
     &__week-day{
         @include titlesFontDesktop();
         font-size: 64px;
         line-height: 75px;
         margin-right: 10px;
+        @media (max-width: 880px ) {
+            font-size: 48px;
+            line-height: 52px;
+            margin-right: 8px;
+        }
+        @media (max-width: 430px ) {
+            font-size: 38px;
+            line-height: 40px;
+            margin-right: 6px;
+        }
     }
     &__month{
         @include addictionalFontDesktop();
@@ -109,101 +193,269 @@ $tasksBackgroundColor: #212121;
     &__num{
         @include addictionalFontDesktop();
     }
-    &__time{
-        @include titlesFontDesktop();
-    }
     }
     &__weather{
     &__mane{
         display: flex;
         column-gap: 5px;
         align-items: flex-end;
+        @media (max-width: 430px ) {
+            column-gap: 0;
+        }
     }
     &__degree{
         @include titlesFontDesktop();
+        @media (max-width: 880px ) {
+            font-size: 32px;
+            line-height: 34px;
+        }
+        @media (max-width: 430px ) {
+            font-size: 24px;
+            line-height: 28px;
+            margin-right: 6px;
+        }
+    }
+    &__cels{
+        @media (max-width: 880px ) {
+            height: 32px;
+        }
+        @media (max-width: 430px ) {
+            height: 24px;
+            margin-right: 10px;
+        }
     }
     &__city{
         @include addictionalFontDesktop();
         font-weight: 500;
         padding-bottom: 8px;
+        @media (max-width: 880px ) {
+            padding-bottom: 3px;
+        }
+        @media (max-width: 430px ) {
+            font-size: 20px;
+            line-height: 22px;
+        }
     }
     &__sun{
         @include addictionalFontDesktop();
+        @media (max-width: 880px ) {
+            font-size: 18px;
+            line-height: 22px;
+        }
     }
     &__wind{
         @include addictionalFontDesktop();
+        @media (max-width: 880px ) {
+            font-size: 18px;
+            line-height: 22px;
+        }
     }
     }
 }
 .add-task{
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto 35px;
+        @media (max-width: 880px ) {
+            max-width: 100%;
+            margin-bottom: 3%;
+        }
     &__container{
-        max-width: 800px;
-        width: 100%;
         padding: 0;
-        margin: 0 auto 35px;
+        @media (max-width: 880px ) {
+            padding: 0 30px;
+        }
+        @media (max-width: 430px ) {
+            padding: 0 15px;
+        }
     }
     &__form{
-        // max-width: 800px;
-        // width: 100%;
-        // margin: 0 auto 35px;
         background-color: $tasksBackgroundColor;
-        padding: 15px 35px 15px 20px;
+        padding: 15px 20px;
         border-radius: 8px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        column-gap: 10px;
+        @media (max-width: 880px ) {
+            padding: 10px 15px;
+        }
+    }
+    &__btn{
+        border: none;
+        padding: 5px  10px;
+        @include titlesFontDesktop();
+        font-weight: 900;
+        color: #fff;
+        background-color: transparent;
+        cursor: pointer;
     }
     &__input{
         @include maneFontDesktop();
-        padding: 15px 20px;
+        padding: 10px 20px;
         border-radius: 8px;
         max-width: 680px;
         width: 100% ;
+        @media (max-width: 880px ) {
+            font-size: 20px;
+            line-height: 22px;
+        }
     }
 
 }
 .tasks__filter{
+    position: relative;
+    z-index: 3;
+    width: 800px;
+    margin: 0 auto 20px;
     @include addictionalFontDesktop();
-    font-weight: 500;
     display: flex;
-    column-gap: 5px;
+    column-gap: 10px;
     align-items: flex-start;
-    // &__list{
-    //     display: flex;
-    //     flex-direction: column;
-    // }
+    flex-wrap: wrap;
+    @media (max-width: 880px ) {
+        font-size: 18px;
+        line-height: 22px;
+        max-width: 100%;
+        margin-bottom: 3%;
+    }
+    @media (max-width: 430px ) {
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 5%;
+    }
+    &__title{
+        font-weight: 600;
+    }
+    &__list{
+        display: flex;
+        column-gap: 20px;
+        @media (max-width: 430px ) {
+            column-gap: 15px;
+        }
+    }
+    &__item{
+        display: flex;
+        column-gap: 5px;
+        cursor: pointer;
+        width: 22px;
+        height: 22px;
+        width: fit-content;
+        align-items: center;
+        & input {
+            position: relative;
+            width: 15px;
+            height: 15px;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                border: 2px solid #212121;
+            }
+            &:checked::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #212121;
+                border: 2px solid #fff;
+                visibility: visible;
+            }
+        }
+    }
 }
 .tasks__list{
+    position: relative;
+    z-index: 3;
     max-width: 800px;
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 }
 .tasks__item{
     // max-width: 800px;
     background-color: $tasksBackgroundColor;
-    padding: 20px 35px 20px 20px;
+    padding: 10px 35px 10px 20px;
     border-radius: 8px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
+    column-gap: 15px;
+    @media (max-width: 620px ) {
+        padding: 10px 15px;
+    }
     &__checkbox{
-        margin-left: 0;
+        position: relative;
+        width: 15px;
+        height: 15px;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 2px solid #212121;
+        }
+        &:checked::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #212121;
+            border: 2px solid #fff;
+            visibility: visible;
+        }
     }
     &__label{
         @include maneFontDesktop();
         line-height: 40px;
         width: 100%;
         margin-left: 0;
+        @media (max-width: 620px ) {
+            font-size: 20px;
+            line-height: 22px;
+        }
     }
     &__info{
         @include addictionalFontDesktop();
         font-size: 18px;
         line-height: 21px;
-        padding-right: 25px;
         text-align: center;
+        @media (max-width: 880px ) {
+            font-size: 16px;
+            line-height: 18px;
+        }
+        @media (max-width: 480px ) {
+            font-size: 12px;
+            line-height: 14px;
+        }
     }
     &__btn-delete{
-        width: 40px;
-        height: 40px;
+        border: none;
+        padding: 10px  15px;
+        background-color: transparent;
+        cursor: pointer;
+    }
+    &__svg-delete{
+        fill: #fff;
     }
 }
