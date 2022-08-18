@@ -132,7 +132,6 @@ $tasksBackgroundColor: #212121;
     }
     }
 }
-
 .info{
     position: relative;
     z-index: 3;
@@ -298,6 +297,12 @@ $tasksBackgroundColor: #212121;
         border-radius: 8px;
         max-width: 680px;
         width: 100% ;
+        &:focus{
+            outline: none;
+            &::-webkit-input-placeholder{
+                opacity: 30%;
+            }
+        }
         @media (max-width: 880px ) {
             font-size: 20px;
             line-height: 22px;
@@ -382,6 +387,15 @@ $tasksBackgroundColor: #212121;
     max-width: 800px;
     width: 100%;
     margin: 0 auto 20px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.done{
+    opacity: 50%;
+    color:darkgray;
+    & button svg{
+        fill: darkgrey;
+    }
 }
 .tasks__item{
     // max-width: 800px;
@@ -392,6 +406,7 @@ $tasksBackgroundColor: #212121;
     display: flex;
     align-items: center;
     column-gap: 15px;
+    list-style-type: none;
     @media (max-width: 620px ) {
         padding: 10px 15px;
     }
@@ -451,11 +466,13 @@ $tasksBackgroundColor: #212121;
     }
     &__btn-delete{
         border: none;
-        padding: 10px  15px;
         background-color: transparent;
         cursor: pointer;
     }
     &__svg-delete{
         fill: #fff;
+        width: 18px;
+        height: 24px;
+        margin: 10px  15px;
     }
 }
