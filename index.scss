@@ -23,6 +23,9 @@ $tasksBackgroundColor: #212121;
     font-size: 20px;
     line-height: 23px;
 }
+body{
+    background-color: #000;
+}
 .container{
     padding: 0 20px;
     @media (max-width: 880px ) {
@@ -388,7 +391,13 @@ $tasksBackgroundColor: #212121;
     width: 100%;
     margin: 0 auto 20px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    height: 200px;
+    overflow: scroll;
+    &::-webkit-scrollbar{
+        width: 0;
+        height: 0;
+    }
 }
 .done{
     opacity: 50%;

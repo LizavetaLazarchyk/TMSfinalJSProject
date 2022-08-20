@@ -16,28 +16,22 @@ if (localStorage.getItem("todos")) {
 }
 
 const todoItems = todos.map((item) => {
-    const li = createTodo(item.id, item.description, item.isCompleted);
+    const li = createTodo(item.id, item.description, item.isCompleted, item.date, item.time);
     return li;
 });
 
-function createDate() {
-    return new Date().toLocaleDateString();
-}
-function createTime() {
-    return new Date().toLocaleTimeString().slice(0, -3);
-}
-
-function createTodo(id, description, isCompleted) {
+function createTodo(id, description, isCompleted, date, time) {
     const li = document.createElement("li");
     const input = document.createElement("input");
     const label = document.createElement("label");
-    const date = document.createElement("p");
-    const time = document.createElement("p");
+    const timeInfo = document.createElement("p");
+    const dateCreation = document.createElement("p");
+    const timeCreation = document.createElement("p");
     const button = document.createElement("button");
 
     li.className = isCompleted ? "tasks__item done" : "tasks__item";
 
-    li.append(input, label, date, time, button);
+    li.append(input, label, timeInfo, button);
     li.dataset.id = id;
 
     label.append(description);
@@ -52,11 +46,14 @@ function createTodo(id, description, isCompleted) {
 
     label.setAttribute("for", input.id);
 
-    date.append(createDate());
-    date.className = "tasks__item__date";
+    timeInfo.className = "tasks__item__info";
+    timeInfo.append(dateCreation, timeCreation);
 
-    time.append(createTime());
-    time.className = "tasks__item__time";
+    dateCreation.append(date);
+    dateCreation.className = "tasks__item__date";
+
+    timeCreation.append(time);
+    timeCreation.className = "tasks__item__time";
 
     button.className = "tasks__item__btn-delete";
     button.innerHTML = `
@@ -86,11 +83,13 @@ newTaskBtn.addEventListener("click", () => {
         id: todos.length >= 1 ? todos.at(-1).id + 1 : 1,
         description: newTaskInput.value,
         isCompleted: false,
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString().slice(0, -3),
     };
     newTaskInput.value = "";
     newTaskBtn.disabled = true;
 
-    const newTodoItem = createTodo(todo.id, todo.description, todo.isCompleted);
+    const newTodoItem = createTodo(todo.id, todo.description, todo.isCompleted, todo.date, todo.time);
     taskList.append(newTodoItem);
     todos.push(todo);
 
@@ -120,6 +119,35 @@ taskList.addEventListener("click", (event) => {
             break;
     }
 });
+
+// Filters
+
+const newTasks = document.querySelector("#new");
+const oldTasks = document.querySelector("#old");
+const doneTasks = document.querySelector("#done");
+const notDoneTasks = document.querySelector("#notDone");
+const taskItems = document.querySelectorAll(".tasks__item");
+
+console.log(todos);
+
+// doneTasks.addEventListener('click', ()=>{
+//     todos.forEach(item =>{
+//     if (item.isCompleted == false){
+//         item.id == taskItems.forEach((task) => {
+//             task.getAttribute(data-id);
+//         }) ? 
+//     }
+//     })
+// })
+doneTasks.addEventListener('click', ()=>{
+    taskItems.forEach((task) => {
+        if(task.className.includes('done')){
+            task.style.display = 'none';
+        }
+    })
+})
+
+
 
 // INFO date
 
@@ -159,3 +187,19 @@ function createDate() {
     return new Date().getDate();
 }
 infoDay.append(createDate());
+
+// Weather
+
+const degree = document.querySelector('.info__weather__degree');
+const aboutSun = document.querySelector('.info__weather__sun');
+const windSpeed = document.querySelector('.info__weather__wind__value');
+
+const url = 'https://api.openweathermap.org/data/2.5/weather?lat=39,9075&lon=116,3972&appid=165c8926906419f045ed06a58d33d5bd';
+
+const fetchResult = fetch(url).then(res => res.json());
+
+fetchResult.then(data => degree.append(Math.floor(data.main.temp - 273.15)));
+fetchResult.then(data => aboutSun.append(data.weather[0].description));
+fetchResult.then(data => windSpeed.append(`${data.wind.speed} m/s`));
+
+fetchResult.then(data => console.log(data));
