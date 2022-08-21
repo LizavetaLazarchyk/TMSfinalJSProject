@@ -128,25 +128,39 @@ const doneTasks = document.querySelector("#done");
 const notDoneTasks = document.querySelector("#notDone");
 const taskItems = document.querySelectorAll(".tasks__item");
 
-console.log(todos);
 
-// doneTasks.addEventListener('click', ()=>{
-//     todos.forEach(item =>{
-//     if (item.isCompleted == false){
-//         item.id == taskItems.forEach((task) => {
-//             task.getAttribute(data-id);
-//         }) ? 
-//     }
-//     })
-// })
-doneTasks.addEventListener('click', ()=>{
+doneTasks.addEventListener('input', ()=>{
+    taskList.style.flexDirection = 'column';
     taskItems.forEach((task) => {
-        if(task.className.includes('done')){
-            task.style.display = 'none';
+        if(!task.className.includes('done')){
+            task.style.order = '2';
+        } else{
+            task.style.order = '1';
         }
     })
 })
-
+notDoneTasks.addEventListener('input', ()=>{
+    taskList.style.flexDirection = 'column';
+    taskItems.forEach((task) => {
+        if(!task.className.includes('done')){
+            task.style.order = '1';
+        } else{
+            task.style.order = '2';
+        }
+    })
+})
+oldTasks.addEventListener('input', ()=>{
+    taskItems.forEach((task) => {
+            task.style.order = '0';
+    })
+    taskList.style.flexDirection = 'column';
+})
+newTasks.addEventListener('input', ()=>{
+    taskItems.forEach((task) => {
+        task.style.order = '0';
+    })
+    taskList.style.flexDirection = 'column-reverse';
+})
 
 
 // INFO date
@@ -162,17 +176,17 @@ function createManeTime() {
 setInterval(() => (infoTime.innerHTML = createManeTime()), 1000);
 
 const days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
 ];
 function createWeekDay() {
     let dayNum = new Date().getDay();
-    return days[dayNum - 1];
+    return days[dayNum];
 }
 infoWeekDay.append(createWeekDay());
 
@@ -203,3 +217,6 @@ fetchResult.then(data => aboutSun.append(data.weather[0].description));
 fetchResult.then(data => windSpeed.append(`${data.wind.speed} m/s`));
 
 fetchResult.then(data => console.log(data));
+
+
+// ChangeBackground
