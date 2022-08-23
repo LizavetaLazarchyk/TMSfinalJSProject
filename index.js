@@ -16,7 +16,13 @@ if (localStorage.getItem("todos")) {
 }
 
 const todoItems = todos.map((item) => {
-    const li = createTodo(item.id, item.description, item.isCompleted, item.date, item.time);
+    const li = createTodo(
+        item.id,
+        item.description,
+        item.isCompleted,
+        item.date,
+        item.time
+    );
     return li;
 });
 
@@ -36,7 +42,6 @@ function createTodo(id, description, isCompleted, date, time) {
 
     label.append(description);
     label.className = "tasks__item__label";
-    
 
     input.type = "checkbox";
     input.className = "tasks__item__checkbox";
@@ -89,7 +94,13 @@ newTaskBtn.addEventListener("click", () => {
     newTaskInput.value = "";
     newTaskBtn.disabled = true;
 
-    const newTodoItem = createTodo(todo.id, todo.description, todo.isCompleted, todo.date, todo.time);
+    const newTodoItem = createTodo(
+        todo.id,
+        todo.description,
+        todo.isCompleted,
+        todo.date,
+        todo.time
+    );
     taskList.append(newTodoItem);
     todos.push(todo);
 
@@ -128,40 +139,38 @@ const doneTasks = document.querySelector("#done");
 const notDoneTasks = document.querySelector("#notDone");
 const taskItems = document.querySelectorAll(".tasks__item");
 
-
-doneTasks.addEventListener('input', ()=>{
-    taskList.style.flexDirection = 'column';
+doneTasks.addEventListener("input", () => {
+    taskList.style.flexDirection = "column";
     taskItems.forEach((task) => {
-        if(!task.className.includes('done')){
-            task.style.order = '2';
-        } else{
-            task.style.order = '1';
+        if (!task.className.includes("done")) {
+            task.style.order = "2";
+        } else {
+            task.style.order = "1";
         }
-    })
-})
-notDoneTasks.addEventListener('input', ()=>{
-    taskList.style.flexDirection = 'column';
+    });
+});
+notDoneTasks.addEventListener("input", () => {
+    taskList.style.flexDirection = "column";
     taskItems.forEach((task) => {
-        if(!task.className.includes('done')){
-            task.style.order = '1';
-        } else{
-            task.style.order = '2';
+        if (!task.className.includes("done")) {
+            task.style.order = "1";
+        } else {
+            task.style.order = "2";
         }
-    })
-})
-oldTasks.addEventListener('input', ()=>{
+    });
+});
+oldTasks.addEventListener("input", () => {
     taskItems.forEach((task) => {
-            task.style.order = '0';
-    })
-    taskList.style.flexDirection = 'column';
-})
-newTasks.addEventListener('input', ()=>{
+        task.style.order = "0";
+    });
+    taskList.style.flexDirection = "column";
+});
+newTasks.addEventListener("input", () => {
     taskItems.forEach((task) => {
-        task.style.order = '0';
-    })
-    taskList.style.flexDirection = 'column-reverse';
-})
-
+        task.style.order = "0";
+    });
+    taskList.style.flexDirection = "column-reverse";
+});
 
 // INFO date
 
@@ -190,7 +199,20 @@ function createWeekDay() {
 }
 infoWeekDay.append(createWeekDay());
 
-const monthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const monthes = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+];
 function createMonth() {
     let monthNum = new Date().getMonth();
     return monthes[monthNum];
@@ -204,62 +226,68 @@ infoDay.append(createDate());
 
 // Weather
 
-const degree = document.querySelector('.info__weather__degree');
-const aboutSun = document.querySelector('.info__weather__sun');
-const windSpeed = document.querySelector('.info__weather__wind__value');
+const degree = document.querySelector(".info__weather__degree");
+const aboutSun = document.querySelector(".info__weather__sun");
+const windSpeed = document.querySelector(".info__weather__wind__value");
 
-const url = 'https://api.openweathermap.org/data/2.5/weather?lat=39,9075&lon=116,3972&appid=165c8926906419f045ed06a58d33d5bd';
+const url =
+    "https://api.openweathermap.org/data/2.5/weather?lat=39,9075&lon=116,3972&appid=165c8926906419f045ed06a58d33d5bd";
 
-const fetchResult = fetch(url).then(res => res.json());
+const fetchResult = fetch(url).then((res) => res.json());
 
-fetchResult.then(data => degree.append(Math.floor(data.main.temp - 273.15)));
-fetchResult.then(data => aboutSun.append(data.weather[0].description));
-fetchResult.then(data => windSpeed.append(`${data.wind.speed} m/s`));
-
+fetchResult.then((data) => degree.append(Math.floor(data.main.temp - 273.15)));
+fetchResult.then((data) => aboutSun.append(data.weather[0].description));
+fetchResult.then((data) => windSpeed.append(`${data.wind.speed} m/s`));
 
 // GitHub Info
 
-const user = document.querySelector('.header__user');
-const modal = document.querySelector('.pop-up');
-const closeBtn = document.querySelector('.pop-up__close');
-const headerUserName = document.querySelector('.header__user__name');
-const userName = document.querySelector('.pop-up__header__name');
-const aboutUser = document.querySelector('.pop-up__header__subTitle');
-const userPhoto = document.querySelector('.pop-up__header__img');
-const linkedin = document.querySelector('.linkedin');
-const github = document.querySelector('.github');
-const email = document.querySelector('.email');
-const userLocation = document.querySelector('.pop-up__location__value');
+const user = document.querySelector(".header__user");
+const modal = document.querySelector(".pop-up");
+const closeBtn = document.querySelector(".pop-up__close");
+const headerUserName = document.querySelector(".header__user__name");
+const userName = document.querySelector(".pop-up__header__name");
+const aboutUser = document.querySelector(".pop-up__header__subTitle");
+const userPhoto = document.querySelector(".pop-up__header__img");
+const linkedin = document.querySelector(".linkedin");
+const github = document.querySelector(".github");
+const email = document.querySelector(".email");
+const userLocation = document.querySelector(".pop-up__location__value");
 
-const urlGit = 'https://api.github.com/users/LizavetaLazarchyk';
-const gitFetchResult = fetch(urlGit).then(res => res.json());
-gitFetchResult.then(data => console.log(data));
-gitFetchResult.then(data => userName.append(data.name));
-gitFetchResult.then(data => headerUserName.append(data.name));
-gitFetchResult.then(data => aboutUser.append(data.bio));
-gitFetchResult.then(data => userLocation.append(data.location));
-gitFetchResult.then(data => userPhoto.setAttribute('src', data.avatar_url));
-gitFetchResult.then(data => linkedin.setAttribute('href', data.blog));
-gitFetchResult.then(data => github.setAttribute('href', data.html_url));
-gitFetchResult.then(data => email.setAttribute('href', data.email));
+const urlGit = "https://api.github.com/users/LizavetaLazarchyk";
+const gitFetchResult = fetch(urlGit).then((res) => res.json());
+// gitFetchResult.then(data => console.log(data));
+gitFetchResult.then((data) => userName.append(data.name));
+gitFetchResult.then((data) => headerUserName.append(data.name));
+gitFetchResult.then((data) => aboutUser.append(data.bio));
+gitFetchResult.then((data) => userLocation.append(data.location));
+gitFetchResult.then((data) => userPhoto.setAttribute("src", data.avatar_url));
+gitFetchResult.then((data) => linkedin.setAttribute("href", data.blog));
+gitFetchResult.then((data) => github.setAttribute("href", data.html_url));
+gitFetchResult.then((data) => email.setAttribute("href", data.email));
 
-user.addEventListener('click', () =>{
-    modal.style.display = 'block';
+user.addEventListener("click", () => {
+    modal.style.display = "block";
 });
 
-closeBtn.addEventListener('click', () =>{
-    modal.style.display = 'none';
-})
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+});
 
+// ChangeBackground
+const ChangeBackground = document.querySelector(".header__change");
+const body = document.querySelector("body");
 
+const flickrKey = "0e1da5c6c7a027c7f38faa3a8bdf1787";
+const flickrTags = "sunset, nature, sunrise";
+const urlFlickr = `https://www.flickr.com//services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${flickrTags}&tag_mode=all&extras=url_h&format=json&nojsoncallback=1`;
 
+const flickrFetchResult = fetch(urlFlickr).then((res) => res.json());
+flickrFetchResult.then((data) => console.log(data));
 
-
-
-
-
-
-
-
-
-
+flickrFetchResult.then((data) => {
+    let photoIndex = 0;
+    ChangeBackground.addEventListener("click", () => {
+        body.style.backgroundImage = `url(${data.photos.photo[photoIndex].url_h})`;
+        photoIndex++;
+    });
+});
