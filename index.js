@@ -216,7 +216,50 @@ fetchResult.then(data => degree.append(Math.floor(data.main.temp - 273.15)));
 fetchResult.then(data => aboutSun.append(data.weather[0].description));
 fetchResult.then(data => windSpeed.append(`${data.wind.speed} m/s`));
 
-fetchResult.then(data => console.log(data));
+
+// GitHub Info
+
+const user = document.querySelector('.header__user');
+const modal = document.querySelector('.pop-up');
+const closeBtn = document.querySelector('.pop-up__close');
+const headerUserName = document.querySelector('.header__user__name');
+const userName = document.querySelector('.pop-up__header__name');
+const aboutUser = document.querySelector('.pop-up__header__subTitle');
+const userPhoto = document.querySelector('.pop-up__header__img');
+const linkedin = document.querySelector('.linkedin');
+const github = document.querySelector('.github');
+const email = document.querySelector('.email');
+const userLocation = document.querySelector('.pop-up__location__value');
+
+const urlGit = 'https://api.github.com/users/LizavetaLazarchyk';
+const gitFetchResult = fetch(urlGit).then(res => res.json());
+gitFetchResult.then(data => console.log(data));
+gitFetchResult.then(data => userName.append(data.name));
+gitFetchResult.then(data => headerUserName.append(data.name));
+gitFetchResult.then(data => aboutUser.append(data.bio));
+gitFetchResult.then(data => userLocation.append(data.location));
+gitFetchResult.then(data => userPhoto.setAttribute('src', data.avatar_url));
+gitFetchResult.then(data => linkedin.setAttribute('href', data.blog));
+gitFetchResult.then(data => github.setAttribute('href', data.html_url));
+gitFetchResult.then(data => email.setAttribute('href', data.email));
+
+user.addEventListener('click', () =>{
+    modal.style.display = 'block';
+});
+
+closeBtn.addEventListener('click', () =>{
+    modal.style.display = 'none';
+})
 
 
-// ChangeBackground
+
+
+
+
+
+
+
+
+
+
+

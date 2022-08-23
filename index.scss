@@ -485,3 +485,136 @@ body{
         margin: 10px  15px;
     }
 }
+.pop-up{
+    // display: none;
+    &__container{
+    position: absolute;
+    max-width: 600px;
+    width: 100%;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    padding: 30px 30px 80px 70px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column; 
+    @media (max-width: 960px ) {
+        max-width: 450px;
+        top: 100px;
+        padding: 20px 20px 60px 50px;
+    }
+    @media (max-width: 550px ) {
+        max-width: 300px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px 20px 60px 50px;
+    }
+    }
+    &__close{
+        font-weight: 500;
+        font-size: 26px;
+        align-self: flex-end;
+        border-style: none;
+        color: #fff;
+        background-color: transparent;
+        cursor: pointer;
+    }
+    &__header{
+        display: flex; 
+        margin: 20px 40px 50px 0;
+        justify-content: space-between;
+        align-items: flex-start;
+        @media (max-width: 550px ) {
+            flex-direction: column-reverse;
+        }
+        &__img{
+            width: 80px;
+            height: 80px;
+            @media (max-width: 960px ) {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        &__img-wrap{
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            object-fit: cover;
+            border-radius: 100px;
+            margin-right: 30px;
+            @media (max-width: 960px ) {
+                width: 60px;
+                height: 60px;
+            }
+            @media (max-width: 550px ) {
+                margin-bottom: 20px;
+            }
+        }
+        &__name{
+            @include maneFontDesktop();
+            font-size: 32px;
+            line-height: 37px;
+            margin-bottom: 10px;
+            @media (max-width: 960px ) {
+                font-size: 26px;
+                line-height: 32px;
+                margin-bottom: 8px;
+            }
+        }
+        &__subTitle{
+            @include maneFontDesktop();
+            font-size: 24px;
+            line-height: 28px;
+            @media (max-width: 960px ) {
+                font-size: 20px;
+                line-height: 26px;
+            }
+        }
+    }
+    &__contacts{
+        margin-bottom: 30px;
+        @media (max-width: 960px ) {
+            margin-bottom: 20px;
+        }
+        &__title{
+            @include maneFontDesktop();
+            font-size: 24px;
+            line-height: 28px;
+            margin-bottom: 15px;
+            @media (max-width: 960px ) {
+                font-size: 20px;
+                line-height: 26px;
+                margin-bottom: 10px;
+            }
+        }
+        &__links{
+            display: flex;
+            column-gap: 25px;
+        }
+        &__link{
+            position: relative;
+            display: block;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            &::after{
+                top:0;
+                bottom:0;
+                left:0;
+                right:0;
+                position:absolute;
+                content:"";
+            }
+        }
+    }
+    &__location{
+        @include maneFontDesktop();
+            font-size: 24px;
+            line-height: 28px;
+            @media (max-width: 960px ) {
+                font-size: 20px;
+                line-height: 26px;
+            }
+    }
+}
