@@ -25,7 +25,7 @@ $tasksBackgroundColor: #212121;
 }
 body{
     background-color: #000;
-    background-image: url(img/backround.png);
+    background-image: url(../img/backround.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -56,29 +56,6 @@ body{
         padding: 0 15px;
     }
 }
-    // .all {
-    // background-image: url(img/backround.png);
-    // background-repeat: no-repeat;
-    // background-position: center;
-    // background-size: cover;
-    // width: 100%;
-    // color: #fff;
-    // z-index: 0;
-    // height: 100vh;
-    // position: relative;
-    // z-index: 1;
-    // &::after{
-    //     content: '';
-    //     position: absolute;
-    //     width: 100%;
-    //     height: 100%;
-    //     top: 0;
-    //     left: 0;
-    //     background-color: #000;
-    //     opacity: 30%;
-    //     z-index: 0;
-    // }
-// }
 .header{
     position: relative;
     z-index: 3;
@@ -125,6 +102,7 @@ body{
         }
     }
     &__change{
+        cursor: pointer;
         @media (max-width: 960px ) {
             width: 30px;
             height: 30px;

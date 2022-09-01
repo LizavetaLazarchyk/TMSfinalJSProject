@@ -284,8 +284,8 @@ const urlFlickr = `https://www.flickr.com//services/rest/?method=flickr.photos.s
 const flickrFetchResult = fetch(urlFlickr).then((res) => res.json());
 flickrFetchResult.then((data) => console.log(data));
 
+let photoIndex = 3;
 flickrFetchResult.then((data) => {
-    let photoIndex = 0;
     ChangeBackground.addEventListener("click", () => {
         body.style.backgroundImage = `url(${data.photos.photo[photoIndex].url_h})`;
         photoIndex++;

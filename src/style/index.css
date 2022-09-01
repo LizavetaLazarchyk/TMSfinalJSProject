@@ -5,7 +5,7 @@
 
 body {
   background-color: #000;
-  background-image: url(img/backround.png);
+  background-image: url(../img/backround.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -109,6 +109,9 @@ body::after {
     font-size: 18px;
     line-height: 22px;
   }
+}
+.header__change {
+  cursor: pointer;
 }
 @media (max-width: 960px) {
   .header__change {
