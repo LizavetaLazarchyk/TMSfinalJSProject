@@ -164,7 +164,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.gitFetchResult = exports.flickrFetchResult = exports.fetchResultWeather = void 0;
-var urlWeater = "https://api.openweathermap.org/data/2.5/weather?lat=39,9075&lon=116,3972&appid=165c8926906419f045ed06a58d33d5bd";
+var urlWeater = "https://api.openweathermap.org/data/2.5/weather?lat=53.8966111&lon=27.5503887&appid=165c8926906419f045ed06a58d33d5bd";
 var fetchResultWeather = fetch(urlWeater).then(function (res) {
   return res.json();
 });
@@ -301,6 +301,7 @@ var linkedin = document.querySelector(".linkedin");
 var github = document.querySelector(".github");
 var email = document.querySelector(".email");
 var userLocation = document.querySelector(".pop-up__location__value");
+var headerUserPhoto = document.querySelector(".header__user__img");
 
 function renderGitInfo() {
   _getDatas.gitFetchResult.then(function (data) {
@@ -321,6 +322,10 @@ function renderGitInfo() {
 
   _getDatas.gitFetchResult.then(function (data) {
     return userPhoto.setAttribute("src", data.avatar_url);
+  });
+
+  _getDatas.gitFetchResult.then(function (data) {
+    return headerUserPhoto.setAttribute("src", data.avatar_url);
   });
 
   _getDatas.gitFetchResult.then(function (data) {
@@ -524,7 +529,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62845" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64512" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

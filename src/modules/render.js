@@ -68,6 +68,7 @@ const linkedin = document.querySelector(".linkedin");
 const github = document.querySelector(".github");
 const email = document.querySelector(".email");
 const userLocation = document.querySelector(".pop-up__location__value");
+const headerUserPhoto = document.querySelector(".header__user__img");
 
 export function renderGitInfo() {
   gitFetchResult.then((data) => userName.append(data.name));
@@ -75,6 +76,7 @@ export function renderGitInfo() {
   gitFetchResult.then((data) => aboutUser.append(data.bio));
   gitFetchResult.then((data) => userLocation.append(data.location));
   gitFetchResult.then((data) => userPhoto.setAttribute("src", data.avatar_url));
+  gitFetchResult.then((data) => headerUserPhoto.setAttribute("src", data.avatar_url));
   gitFetchResult.then((data) => linkedin.setAttribute("href", data.blog));
   gitFetchResult.then((data) => github.setAttribute("href", data.html_url));
   gitFetchResult.then((data) => email.setAttribute("href", data.email));
